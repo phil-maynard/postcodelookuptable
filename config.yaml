@@ -1,0 +1,56 @@
+---
+
+## ⚙️ `config.yaml`
+
+```yaml
+paths:
+  data_dir: "./data"
+  out_dir: "./out"
+  nspl_csv: "./data/nspl.csv"
+  rgc_ewni_xlsx: "./data/rgc_ewni.xlsx"
+  rgc_scot_xlsx: "./data/rgc_scotland.xlsx"
+
+geo_lookup:
+  out_csv: "./out/GeoAreaLookup.csv"
+  out_parquet: "./out/GeoAreaLookup.parquet"
+
+  ewni_sheets: []        # optionally list sheet names
+  scotland_sheets: []
+
+  column_map:
+    code: ["Code", "GEOGCD", "GSS_CODE", "CODE"]
+    name: ["Name", "GEOGNM", "GEOGNMK", "GEOGNAME", "NAME"]
+    alternatename: ["Alt Name", "Alternate Name", "GEOGNMK", "ALTNAME"]
+    status: ["Status", "STAT", "GEOGSTAT", "ACTIVE"]
+
+  per_sheet_overrides: {}
+
+postcode_lookup:
+  out_csv: "./out/PostcodeLookup.csv"
+  out_parquet: "./out/PostcodeLookup.parquet"
+
+  keep_columns:
+    - pcds
+    - oa21
+    - lsoa21
+    - msoa21
+    - ladcd
+    - lat
+    - long
+
+  join_name_for_codes:
+    - oa21
+    - lsoa21
+    - msoa21
+    - ladcd
+
+  rename_final:
+    pcds: Postcode
+    oa21: OA21
+    lsoa21: LSOA21
+    msoa21: MSOA21
+    ladcd: LADCD
+    lat: Latitude
+    long: Longitude
+
+  use_duckdb: false
