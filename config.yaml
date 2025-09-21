@@ -14,14 +14,18 @@ geo_lookup:
   out_csv: "./out/GeoAreaLookup.csv"
   out_parquet: "./out/GeoAreaLookup.parquet"
 
-  ewni_sheets: []        # optionally list sheet names
+  # If empty, script reads all sheets, but you can filter by pattern.
+  ewni_sheets: []
   scotland_sheets: []
 
+  # NEW: only process sheets whose name matches this regex
+  sheet_name_pattern: "^[A-Z][0-9]{2}"
+
   column_map:
-    code: ["Code", "GEOGCD", "GSS_CODE", "CODE"]
-    name: ["Name", "GEOGNM", "GEOGNMK", "GEOGNAME", "NAME"]
-    alternatename: ["Alt Name", "Alternate Name", "GEOGNMK", "ALTNAME"]
-    status: ["Status", "STAT", "GEOGSTAT", "ACTIVE"]
+    code: ["Code", "GEOGCD", "GSS_CODE", "CODE", "LAD24CD", "WD24CD"]
+    name: ["Name", "GEOGNM", "GEOGNMK", "GEOGNAME", "NAME", "LAD24NM", "WD24NM"]
+    alternatename: ["Alt Name", "Alternate Name", "GEOGNMK", "ALTNAME", "LAD24NMW", "WD24NMW"]
+    status: ["Status", "STAT", "GEOGSTAT", "ACTIVE", "STATUS"]
 
   per_sheet_overrides: {}
 
